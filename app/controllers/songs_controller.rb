@@ -16,10 +16,11 @@ class SongsController < ApplicationController
   #
   post '/songs' do
     @song = Song.create(params[:song])
+    @song.genre_ids = params[:genres]
+    @song.save
     if !params["artist"]["name"].empty?
       @song.artist = Artist.create(name: params[:artist][:name])
-      @song.genre_ids = params[:genres]
-      @song.save
+
     end
     # binding.pry
     flash[:message] = "Successfully created song."
