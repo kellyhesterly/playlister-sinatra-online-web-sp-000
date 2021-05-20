@@ -20,7 +20,6 @@ class SongsController < ApplicationController
     @song.save
     if !params["artist"]["name"].empty?
       @song.artist = Artist.create(name: params[:artist][:name])
-
     end
     # binding.pry
     flash[:message] = "Successfully created song."
